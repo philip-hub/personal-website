@@ -1,0 +1,67 @@
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.profile, .content {
+    max-width: 900px; /* Set max-width for the content */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Center all content initially */
+}
+
+.profile-image {
+    width: 120px;
+    border-radius: 50%;
+}
+
+h1, h2, h4 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+ul {
+    text-align: left; /* Align list items to the left */
+    padding-left: 40px; /* Add padding for lists */
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #0073e6;
+    font-weight: 600;
+}
+
+/* Right-align everything after the Experience section */
+.right-align-section {
+    text-align: right;
+    margin-top: 40px;
+}
+
+.button {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+
+  .desc{
+    font-size: 1.0em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+  }

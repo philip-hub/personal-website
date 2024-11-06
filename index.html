@@ -1,0 +1,47 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philip Pounds</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Way2(recommended): Import the basic dependencies -->
+    <script src="https://unpkg.com/jparticles/browser/jparticles.base.js"></script>
+    <!-- then import specific effect on-demand -->
+    <script src="https://unpkg.com/jparticles/browser/particle.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Particle effect container -->
+    <div id="particles-js"></div>
+
+    <!-- Your content -->
+    <center>
+        <div class="content">
+            <div class="main">
+                <p id="website-name">Philip Pounds</p>
+                <p>Engineer | Hacker | Adventurer</p>
+            </div>
+
+            <footer class="footer"></footer>
+            <div class="footer-links">
+                <a href="portfolio.html">Portfolio</a>
+                <a href="resume.html">Experience</a>
+                <a href="https://cad-x-ai.github.io/site/" target="_blank">CAD X</a>
+                <a href="mailto:poundspb@rose-hulman.edu">Email</a>
+            </div>
+        </div>
+    </center>
+
+    <script>
+        // Initialize particles.js with the effect on the 'body' element
+        new JParticles.Particle('#particles-js', {
+            color: '#c5e4eb',
+            lineShape: 'cube',
+            range: 6000,
+            proximity: 70,
+            parallax: true
+        });
+    </script>
+</body>
