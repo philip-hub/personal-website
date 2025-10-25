@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Philip Pounds — Portfolio</title>
+  <meta name="description" content="Mechanical & software engineer. Featured projects: Ion Thruster, Carbon Electric Motorcycle, 5‑Axis 3D Printer. Software: Finance AI Bot, Fusion 360 scripts, ML & CAD tools."/>
+  <meta property="og:title" content="Philip Pounds — Portfolio" />
+  <meta property="og:description" content="Featured engineering and software projects by Philip Pounds." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0d10;          /* dark slate */
+      --bg-soft:#101419;      /* slightly lighter */
+      --card:#121821;         /* card background */
+      --text:#e9edf1;         /* primary text */
+      --muted:#a9b6c5;        /* secondary text */
+      --brand:#60a5fa;        /* primary accent */
+      --brand-2:#34d399;      /* secondary accent */
+      --chip:#0e2238;         /* tech chip */
+      --chip-text:#cfe3ff;
+      --ring: 0 0 0 2px rgba(96,165,250,0.35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f8fb;
+        --bg-soft:#eef2f7;
+        --card:#ffffff;
+        --text:#0b1220;
+        --muted:#405065;
+        --chip:#eef6ff;
+        --chip-text:#0b2960;
+        --shadow: 0 12px 24px rgba(10, 45, 90, 0.07);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(100,180,255,0.12), transparent 55%),
+                  radial-gradient(900px 600px at -10% 10%, rgba(80,220,170,0.12), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{ text-decoration:underline }
+
+    /* Layout */
+    .container{ width:min(1150px, 92%); margin-inline:auto; }
+
+    /* Top Nav */
+    .nav{ position:sticky; top:0; z-index:40; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg), transparent 60%);}
+    .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand{ display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.2px }
+    .pill{ display:inline-flex; align-items:center; gap:8px; background:var(--bg-soft); padding:10px 14px; border-radius:999px; box-shadow:var(--shadow)}
+    .pill svg{ width:18px; height:18px }
+    .nav a.link{ color:var(--text); opacity:.9; padding:8px 12px; border-radius:10px }
+    .nav a.link:hover{ background:var(--bg-soft); text-decoration:none }
+
+    /* Hero */
+    .hero{ padding:64px 0 26px }
+    .hero .title{ font-weight:800; font-size: clamp(28px, 4vw, 46px); line-height:1.08; letter-spacing: -0.02em;}
+    .hero .subtitle{ color:var(--muted); font-size: clamp(15px, 1.8vw, 18px); max-width: 65ch }
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:22px }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px;
+      background:linear-gradient(180deg, color-mix(in oklab, var(--brand), transparent 70%), transparent);
+      color:var(--text); border:1px solid color-mix(in oklab, var(--brand), transparent 70%);
+      box-shadow: var(--shadow);
+    }
+    .btn.secondary{ background:var(--bg-soft); border-color:transparent }
+    .btn:hover{ text-decoration:none; outline: var(--ring) }
+
+    /* Section */
+    .section{ padding:30px 0 12px }
+    .section h2{ font-size: clamp(20px, 2.5vw, 28px); margin:6px 0 16px; letter-spacing:-0.01em }
+    .kicker{ display:inline-block; font-size:12px; letter-spacing: .2em; text-transform:uppercase; color:var(--muted) }
+
+    /* Grid */
+    .grid{ display:grid; gap:16px }
+    @media (min-width:660px){ .grid{ grid-template-columns: repeat(2, 1fr)} }
+    @media (min-width:980px){ .grid{ grid-template-columns: repeat(3, 1fr)} }
+
+    /* Card */
+    .card{
+      background:linear-gradient(180deg, color-mix(in oklab, var(--card), transparent 0%), color-mix(in oklab, var(--card), transparent 4%));
+      border:1px solid color-mix(in oklab, var(--brand), transparent 85%);
+      border-radius: var(--radius);
+      overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease; position:relative;
+    }
+    .card:hover{ transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.28) }
+    .media{ aspect-ratio: 16/9; background: #0c121a; overflow:hidden }
+    .media img{ width:100%; height:100%; object-fit:cover; display:block }
+    .body{ padding:14px 16px 16px }
+    .body h3{ margin:6px 0 10px; font-size: clamp(16px, 2vw, 19px) }
+    .body p{ color:var(--muted); margin:0 }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px }
+    .tag{ background:var(--chip); color:var(--chip-text); padding:6px 10px; border-radius:999px; font-size:12px }
+    .actions{ display:flex; gap:10px; align-items:center; margin-top:12px }
+    .ghost{ padding:8px 12px; border-radius:12px; border:1px solid color-mix(in oklab, var(--brand), transparent 70%); }
+    .ghost:hover{ outline:var(--ring); text-decoration:none }
+
+    /* Footer */
+    footer{ padding:30px 0 60px; color:var(--muted) }
+    .foot-links{ display:flex; gap:16px; flex-wrap:wrap }
+
+    /* Small helpers */
+    .mono{ font-variant-ligatures: none; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace }
+    .split{ display:flex; gap:12px; flex-wrap:wrap; align-items:center }
+    .spacer{ height:8px }
+    .note{ color:var(--muted); font-size:13px }
+
+    /* Simple dark-mode toggle */
+    .toggle{ cursor:pointer }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <span class="pill" aria-label="Brand">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17l-5.5 3.2 1-6.2L3 9.6l6.2-.9L12 3z" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span>Philip Pounds</span>
+        </span>
+      </div>
+      <nav class="split">
+        <a class="link" href="#engineering">Engineering</a>
+        <a class="link" href="#software">Software</a>
+        <a class="link" href="index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="title">Building hardware that moves, and software that proves it.</h1>
+      <p class="subtitle">Mechanical & software engineer focused on multi‑axis 3D printing, electric propulsion, and production‑grade automation. Below are my flagship engineering builds followed by selected software projects.</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/philip-hub" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn secondary" href="https://www.printables.com/@philippounds_2566059" target="_blank" rel="noopener">Printables</a>
+      </div>
+    </section>
+
+    <!-- FEATURED ENGINEERING PROJECTS -->
+    <section id="engineering" class="section">
+      <span class="kicker">Featured Engineering</span>
+      <h2>Flagship Builds</h2>
+      <div class="grid">
+        <!-- Ion Thruster -->
+        <article class="card">
+          <div class="media"><img src="ion.PNG" alt="Gridded Ion Thruster prototype" loading="lazy" /></div>
+          <div class="body">
+            <h3>Gridded Ion Thruster — Rose‑Hulman EPRT</h3>
+            <p>I co‑designed mechanical & electrical subsystems for one of the first fully student‑built gridded ion thrusters. Led BoM, integration docs, and grant package.</p>
+            <div class="tags">
+              <span class="tag">HV Power</span><span class="tag">Thermals</span><span class="tag">Mech Design</span><span class="tag">Documentation</span>
+            </div>
+          </div>
+        </article>
+        <!-- Carbon Electric Motorcycle -->
+        <article class="card">
+          <div class="media"><img src="motorcycle.jpg" alt="Carbon electric motorcycle" loading="lazy"/></div>
+          <div class="body">
+            <h3>Carbon Electric Motorcycle</h3>
+            <p>Ground‑up electric motorcycle with carbon structure. Focused on powertrain packaging, composite layup strategy, and serviceable electronics architecture.</p>
+            <div class="tags">
+              <span class="tag">Composites</span><span class="tag">Powertrain</span><span class="tag">LV/HV Safety</span>
+            </div>
+          </div>
+        </article>
+        <!-- 5‑Axis 3D Printer -->
+        <article class="card">
+          <div class="media"><img src="5axis.jpg" alt="5‑axis 3D printer prototype" loading="lazy"/></div>
+          <div class="body">
+            <h3>5‑Axis 3D Printer Platform</h3>
+            <p>Custom multi‑axis printer (X Y Z B C) with Duet 3 Mini 5+ control and experimental multi‑planar slicing. Targeting accessible, secure, U.S.‑assembled platform.</p>
+            <div class="tags">
+              <span class="tag">Duet 3</span><span class="tag">Multi‑Planar</span><span class="tag">Kinematics</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <!-- SOFTWARE PROJECTS -->
+    <section id="software" class="section">
+      <span class="kicker">Software</span>
+      <h2>Selected Software Projects</h2>
+      <div class="grid">
+        <!-- Finance AI Bot -->
+        <article class="card">
+          <div class="media"><img src="finance-bot.jpg" alt="Finance AI bot charts UI" loading="lazy"/></div>
+          <div class="body">
+            <h3>Finance AI Bot</h3>
+            <p>Research agent for screening equities/ETFs with factor signals and custom backtests; exports to Python/CSV & auto‑generates notes.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Backtesting</span><span class="tag">LLM</span>
+            </div>
+            <div class="actions">
+              <a class="ghost" href="#" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </div>
+        </article>
+        <!-- Fusion Script 1 -->
+        <article class="card">
+          <div class="media"><img src="fusion-script-1.jpg" alt="Fusion 360 script UI" loading="lazy"/></div>
+          <div class="body">
+            <h3>Fusion 360 Script — Part Generator</h3>
+            <p>Parametric body/feature generator with coordinate transforms and sketch primitives for rapid prototyping.</p>
+            <div class="tags">
+              <span class="tag">Fusion 360 API</span><span class="tag">Python</span>
+            </div>
+            <div class="actions">
+              <a class="ghost" href="#" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </div>
+        </article>
+        <!-- Fusion Script 2 -->
+        <article class="card">
+          <div class="media"><img src="fusion-script-2.jpg" alt="Fusion 360 automation" loading="lazy"/></div>
+          <div class="body">
+            <h3>Fusion 360 Script — CAD Automation</h3>
+            <p>Batch operations for sketches/extrusions with BOM export and drawing prep helpers.</p>
+            <div class="tags">
+              <span class="tag">Fusion 360 API</span><span class="tag">Automation</span>
+            </div>
+            <div class="actions">
+              <a class="ghost" href="#" target="_blank" rel="noopener">Repo</a>
+            </div>
+          </div>
+        </article>
+        <!-- CNV Interactive Viewer for rAI -->
+        <article class="card">
+          <div class="media"><img src="image4.png" alt="CNV interactive viewer mock" loading="lazy"/></div>
+          <div class="body">
+            <h3>CNV Interactive Viewer for rAI</h3>
+            <p>Uploads JSON, processes multi‑sample CNV data, renders interactive scatter/heatmaps for streamlined analysis. Built with React/Next.js.</p>
+            <div class="tags">
+              <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Python</span>
+            </div>
+            <div class="actions">
+              <a class="ghost" href="https://github.com/adamjirovec/personal-website/blob/main/image4.png" target="_blank" rel="noopener">Screenshot</a>
+            </div>
+          </div>
+        </article>
+        <!-- CAD X AI -->
+        <article class="card">
+          <div class="media"><img src="cadx.PNG" alt="CAD X AI site" loading="lazy"/></div>
+          <div class="body">
+            <h3>Generative AI for Engineering — CAD X AI</h3>
+            <p>Co‑founder on research exploring text‑to‑3D printables and design‑assistant tooling.</p>
+            <div class="tags">
+              <span class="tag">TensorFlow</span><span class="tag">Data</span><span class="tag">Python</span>
+            </div>
+            <div class="actions">
+              <a class="ghost" href="https://cad-x-ai.github.io/site/" target="_blank" rel="noopener">Project Site</a>
+            </div>
+          </div>
+        </article>
+        <!-- ML: Extrusion Flow Shapes -->
+        <article class="card">
+          <div class="media"><img src="flownet.PNG" alt="Extrusion flow shapes ML" loading="lazy"/></div>
+          <div class="body">
+            <h3>ML for Extrusion Flow Shapes</h3>
+            <p>U‑Net models for predicting extrusion shapes; HP compute job orchestration and hyper‑parameter sweeps.</p>
+            <div class="tags">
+              <span class="tag">TensorFlow</span><span class="tag">HPC</span>
+            </div>
+          </div>
+        </article>
+        <!-- Coiled‑Coils -->
+        <article class="card">
+          <div class="media"><img src="coiledcoils.PNG" alt="Coiled‑coil classifier" loading="lazy"/></div>
+          <div class="body">
+            <h3>Classifying Coiled‑Coil Sequences</h3>
+            <p>Transformer/RNN models to identify peptide sequences for hydrogel candidates under Dr. Alex Pak.</p>
+            <div class="tags">
+              <span class="tag">Transformers</span><span class="tag">RNN</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section class="section">
+      <span class="kicker">Links</span>
+      <h2>Elsewhere</h2>
+      <div class="split">
+        <a class="ghost" href="https://github.com/philip-hub" target="_blank" rel="noopener">GitHub</a>
+        <a class="ghost" href="https://www.printables.com/@philippounds_2566059" target="_blank" rel="noopener">Printables</a>
+      </div>
+      <p class="note" style="margin-top:10px">Tip: rename your images to match the src attributes above (e.g., <span class="mono">motorcycle.jpg</span>, <span class="mono">5axis.jpg</span>). Everything else is drop‑in.</p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <hr style="border-color: color-mix(in oklab, var(--brand), transparent 80%); opacity:.5"/>
+    <footer>
+      <div class="foot-links">
+        <span>© <span id="y"></span> Philip Pounds</span>
+        <span>•</span>
+        <a href="index.html">Home</a>
+      </div>
+    </footer>
+  </footer>
+
+  <script>
+    // year stamp
+    document.getElementById('y').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
